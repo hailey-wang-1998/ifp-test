@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Risk-taking and family size</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div id="tooltip" role="tooltip" hidden></div>
+
+<main id="chart-story">
+  <div id="scene">
+    <div id="figure">
+
+      <h1 id="title"></h1>
+      <p id="subtitle"></p>
+
+      <div id="legend" hidden aria-label="Family-size measures">
+        <span class="legend-item">
+          <i class="swatch" style="background:#b698ca"></i>
+          Happiest with
+        </span>
+
+        <span class="legend-item">
+          <i class="swatch" style="background:#d69b62"></i>
+          Plan to have
+        </span>
+
+        <span class="legend-item">
+          <i class="swatch" style="background:#168675"></i>
+          Actual number of children
+        </span>
+      </div>
+
+      <div id="single">
+        <div class="plot-wrap">
+          <svg
+            id="chart"
+            role="img"
+            aria-labelledby="svgtitle svgdesc"
+            viewBox="0 0 1040 545"
+          ></svg>
+
+          <div id="label-layer" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <p id="source">
+        Source: IFS/Wheatley State of Family Culture Survey, 2026.
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<article id="design-notes" aria-labelledby="notes-heading">
+  <h2 id="notes-heading">Design notes</h2>
+
+  <section class="notes-section">
+    <h3 class="section-question">
+      1. A new chart that expresses your visual and editorial judgement.
+      And feel free to include:
+    </h3>
+
+    <h4 class="question">
+      a. Any sketches as you developed your new chart
+    </h4>
+
+    <p>
+      Here I was testing out different colors and the line connecting dots.
+    </p>
+
+    <figure class="notes-figure">
+      <img
+        src="./color-testing.png"
+        alt="An early scatterplot sketch with three colors and lines connecting each group's family-size measures."
+        loading="lazy"
+      >
+    </figure>
+
+    <h4 class="question">
+      b. Any initial concepts you tried and discarded with a note on why
+    </h4>
+
+    <p>
+      I first explored a few different ways to show the relationship.
+      One idea was a slope chart, and another was a bar chart that ranked
+      countries by their willingness to take risks. But at the end I felt
+      that a scatterplot was still better for showing the relationship
+      between risk-taking and family size.
+    </p>
+
+    <figure class="notes-figure">
+      <img
+        src="./bar.png"
+        alt="An AI-generated bar chart mockup comparing risk-taking scores and planned number of children."
+        loading="lazy"
+      >
+    </figure>
+
+    <p>
+      (I used AI to generate this bar chart as a quick mockup because
+      I just wanted to test out the idea and see if this chart type would work.)
+    </p>
+
+    <p>
+      I also tried separating the three family size measures into three
+      scatterplots and tried a small multiples. Each chart would show only
+      one measure, so the points would be less crowded. But eventually, I wanted readers to see how
+      the three measures compared without having to look back and forth
+      between different charts, so I discarded this idea too.
+    </p>
+
+    <figure class="notes-figure">
+      <img
+        src="./small-mutiples.png"
+        alt="Three separate scatterplots showing happiest family size, intended family size and actual number of children against risk-taking scores."
+        loading="lazy"
+      >
+    </figure>
+
+    <h4 class="question">
+      c. Any technical notes on
+    </h4>
+
+    <h5 class="subquestion">
+      i. Approach to building from a graphical perspective
+    </h5>
+
+    <p>
+      I kept the scatterplot but used animation to introduce the information
+      step by step. I started with country rankings, moved the dots to their
+      actual risk scores, and then added the three family size measures.
+      The last step highlights the main trend.
+    </p>
+
+    <h5 class="subquestion">
+      ii. Software(s) or methods used
+    </h5>
+
+    <p>
+      I used HTML, CSS, JavaScript, and SVG to build the interactive chart
+      and animations.
+    </p>
+
+    <h5 class="subquestion">
+      iii. Color, line, shape, hierarchy, value, motion, etc.
+    </h5>
+
+    <p>
+      I used only colors instead of both colors and shapes to separate
+      the three family size measures. And I also added animation and annotation to make the changes easier to follow.
+    </p>
+
+    <p>
+      In the final step, I turned two measures gray to create a clearer
+      visual hierarchy. I also used annotations for Egypt and Israel
+      to explain the exceptions to the overall trend.
+    </p>
+  </section>
+
+  <section class="notes-section">
+    <h3 class="section-question">
+      2. A critique of the existing chart and an explanation of your own
+      design choices in revision. This should include:
+    </h3>
+
+    <h4 class="question">
+      a. A description of the original goal(s) of the chart,
+      as you read it in context.
+    </h4>
+
+    <p>
+      The goal was to show how three measures of family size relate to
+      willingness to take risks across the groups in the survey:
+      how many children respondents thought would make them happiest,
+      how many they planned to have, and how many they already had.
+    </p>
+
+    <p>
+      Further down in the story, the author looks at other factors,
+      like how clearly people could picture their future and whether
+      they expected life to get better. Here, though, we’re only
+      looking at risk-taking.
+    </p>
+
+    <p>
+      I also learned later in the article that optimism seemed to have a stronger link to
+      family size across groups than risk-taking did. But willingness
+      to take risks still had a positive relationship with family size,
+      and that was what I wanted this chart to show. So I tried to show
+      this trend but keep the headline from sounding too certain when
+      remaking this chart.
+    </p>
+
+    <h4 class="question">
+      b. Why it falls short of that (those) goal(s).
+    </h4>
+
+    <p>
+      The original chart looks cluttered because it tries to show too
+      many things at once.
+    </p>
+
+    <p>
+      The X and Y axes already show two different factors, but the chart
+      also includes three measures of family size. On top of that,
+      the chart uses both colors and shapes to separate the three
+      family size measures, which makes it even harder to read.
+      All eight country names are also placed vertically on an already
+      crowded chart, which makes it difficult to focus on the data.
+    </p>
+
+    <p>
+      Countries like Egypt and Israel also seem to go against the overall
+      trend, which makes the positive relationship even harder to see.
+      Without the trend lines, I could barely see the positive relationship
+      the chart was trying to show. But not everyone knows what these
+      trend lines mean, so they may not be very helpful.
+    </p>
+
+    <h4 class="question">
+      c. Whether you tried to design a chart that served all of those
+      goals or narrowed your focus.
+    </h4>
+
+    <p>
+      I kept the scatterplot because I think it is still the best way to
+      show the relationship between two factors. I also wanted to keep
+      all three measures of family size because they provide useful
+      context and it is interesting to see the comparison between them.
+      But my main goal was to make the chart less crowded and easier
+      to follow.
+    </p>
+
+    <p>
+      Instead of showing everything at once, I decided to break the chart
+      into several steps using animation. Each step shows only a little
+      more information, so readers can understand the chart before it gets
+      more complicated. In the final step, I narrowed the focus to the
+      number of children people already had because it seemed to show
+      the clearest positive relationship with willingness to take risks. So I would say both to answer this question as I tried to serve all the goals, but I also narrowed the focus in the final step.
+    </p>
+
+    <h4 class="question">
+      d. How your design choices better serve the goal you identified.
+    </h4>
+
+    <p>
+      First, I think it is important for readers to understand what is on
+      the X and Y axes when they look at a scatterplot, so they know what
+      two factors they are comparing. I made the X axis the first step
+      of the animation. I also started by showing the eight countries
+      in rank order, with equal space between them. This gives readers
+      a chance to see all the country names clearly before the points
+      move to their actual scores, where they become more crowded.
+    </p>
+
+    <p>
+      Next, I showed all three family size measures, with a different color
+      for each one. This also fixed one problem in the original chart,
+      which used both colors and shapes to show the same differences.
+      I only used colors to make the chart look cleaner.
+    </p>
+
+    <p>
+      Finally, I still thought the chart was too crowded with all three
+      measures shown together. Since the number of children people already
+      had seemed to have the strongest relationship with risk-taking,
+      I decided to highlight only that measure and turn the other two gray.
+      This way, readers can still see the other measures for context,
+      but their attention goes to the one I want to focus on.
+    </p>
+
+    <p>
+      I also added annotations for Egypt and Israel at the last step
+      because they do not seem to follow the overall trend as closely
+      as the other countries. By making the other points less distracting
+      and explaining these two exceptions, I wanted to make the upward
+      positive trend easier to see without suggesting that every country
+      follows the same pattern.
+    </p>
+
+    <h4 class="question">
+      e. What you would have asked the author to shape your choices
+      if you had been working closely with him.
+    </h4>
+
+    <p>
+      First, I would ask why Japan was not included in the chart,
+      since it was mentioned in the story.
+    </p>
+
+    <p>
+      I would also ask if we really needed to show all three measures of
+      family size in this chart. Could we focus on just one? I think
+      showing only one measure could still serve the purpose of explaining
+      the relationship between risk-taking and fertility, at least for this
+      part of the story. It would also make the chart much easier to read.
+      I would want to know if the author had a specific reason for including
+      all three measures or if we could simplify the chart by focusing on just one.
+    </p>
+  </section>
+</article>
+
+<script>
+(() => {
+  const data = [
+    {
+      name: 'Korea',
+      risk: 4.38,
+      h: 1.86,
+      i: 1.14,
+      a: .69
+    },
+    {
+      name: 'Israel',
+      risk: 5.20,
+      h: 2.93,
+      i: 3.02,
+      a: 1.55
+    },
+    {
+      name: 'Chinese-speakers elsewhere in Asia',
+      short: 'Other Asian Chinese-speakers',
+      risk: 5.33,
+      h: 1.63,
+      i: 1.33,
+      a: .77
+    },
+    {
+      name: 'United Kingdom',
+      risk: 5.66,
+      h: 2.31,
+      i: 1.93,
+      a: 1.02
+    },
+    {
+      name: 'Ireland',
+      risk: 5.70,
+      h: 2.31,
+      i: 1.89,
+      a: 1.04
+    },
+    {
+      name: 'China (mainland)',
+      risk: 5.87,
+      h: 1.88,
+      i: 1.61,
+      a: 1.11
+    },
+    {
+      name: 'Egypt',
+      risk: 5.91,
+      h: 2.53,
+      i: 2.88,
+      a: 1.83
+    },
+    {
+      name: 'United States',
+      risk: 6,
+      h: 2.39,
+      i: 1.95,
+      a: 1.17
+    }
+  ];
+
+  const $ = id => document.getElementById(id);
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = $('chart');
+
+  const fmt = n => Number(n.toFixed(2)).toString();
+
+  const colors = {
+    h: '#b698ca',
+    i: '#d69b62',
+    a: '#168675'
+  };
+
+  const gray = '#dadcde';
+  const pointerColor = '#111';
+
+  const labels = {
+    h: 'Happiest with',
+    i: 'Plan to have',
+    a: 'Already have'
+  };
+
+  const keys = ['h', 'i', 'a'];
+  const scenes = ['rank', 'score', 'combined', 'actual'];
+
+  const copy = {
+    rank: {
+      title: 'How do the eight groups rank on risk-taking?',
+      subtitle:
+        'Of the eight groups, people in the U.S. were the most willing to take risks and people in Korea were the least willing.'
+    },
+
+    score: {
+      title: 'Now look at the actual risk scores',
+      subtitle:
+        'Korea had the lowest score at 4.4, and the U.S. had the highest at 6.'
+    },
+
+    combined: {
+      title: 'How does risk-taking relate to family size?',
+      subtitle:
+        'Groups with higher risk scores generally wanted more children, planned to have more children and already had more children.'
+    },
+
+    actual: {
+      title: 'Groups more willing to take risks tend to have more children',
+      subtitle:
+        'Of the three family-size measures, the number of children people already had shows the clearest link to risk-taking.<br>If we set <b>Israel</b> and <b>Egypt</b> aside for a moment, where researchers did not find this pattern, it is easier to see that groups with higher risk scores tended to have more children.'
+    }
+  };
+
+  const L = 80;
+  const R = 960;
+  const T = 65;
+  const B = 449;
+
+  const x = r => L + (R - L) * (r - 4) / 2.2;
+  const y = v => B - (B - T) * v / 4;
+
+  const reduced = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  let mode = 'rank';
+  let current = [];
+  let selected = null;
+  let raf = 0;
+  let moving = false;
+
+  function el(tag, attrs = {}, content, root = svg) {
+    if (tag === 'text' && !attrs.class) {
+      const label = document.createElement('span');
+
+      label.className =
+        'plot-label' +
+        (String(content).includes('\n') ? ' multiline' : '');
+
+      label.textContent = content;
+      label.style.left = (100 * attrs.x / 1040) + '%';
+      label.style.top = (100 * attrs.y / 545) + '%';
+
+      label.style.setProperty(
+        '--label-x',
+        {
+          middle: '-50%',
+          end: '-100%'
+        }[attrs['text-anchor']] || '0%'
+      );
+
+      $('label-layer').appendChild(label);
+      return label;
+    }
+
+    const node = document.createElementNS(ns, tag);
+
+    for (const [key, value] of Object.entries(attrs)) {
+      node.setAttribute(key, value);
+    }
+
+    if (content !== undefined) {
+      node.textContent = content;
+    }
+
+    root.appendChild(node);
+    return node;
+  }
+
+  function positions(step) {
+    return data.flatMap((d, j) =>
+      keys.map(key => ({
+        x: step === 'rank'
+          ? L + (R - L) * j / 7
+          : x(d.risk),
+
+        y: step === 'rank' || step === 'score'
+          ? B
+          : y(d[key])
+      }))
+    );
+  }
+
+  function tip(j, key, box) {
+    if (moving) return;
+
+    const d = data[j];
+    const node = $('tooltip');
+
+    node.replaceChildren();
+
+    const strong = document.createElement('strong');
+    strong.textContent = d.name;
+    node.appendChild(strong);
+
+    const score = document.createElement('span');
+
+    score.textContent = mode === 'rank'
+      ? `Rank: ${j + 1} of 8`
+      : `Score: ${fmt(d.risk)}`;
+
+    node.appendChild(score);
+
+    // The score step shows only the group name and risk score.
+    if (mode !== 'score' && key) {
+      const measure = document.createElement('span');
+      measure.textContent = `${labels[key]}: ${fmt(d[key])} ${d[key] === 1 ? 'child' : 'children'}`;
+      node.appendChild(measure);
+    }
+
+    node.hidden = false;
+
+    node.style.left = Math.min(
+      innerWidth - node.offsetWidth - 12,
+      Math.max(12, box.left + 10)
+    ) + 'px';
+
+    node.style.top = Math.max(
+      12,
+      box.top - node.offsetHeight - 12
+    ) + 'px';
+  }
+
+  function mark(root, px, py, j, key = null, radius = 6) {
+    const d = data[j];
+
+    const isException =
+      d.name === 'Israel' || d.name === 'Egypt';
+
+    const muted =
+      mode === 'actual' && (key !== 'a' || isException);
+
+    const color = muted
+      ? gray
+      : key
+        ? colors[key]
+        : '#41494e';
+
+    const group = el(
+      'g',
+      {
+        role: 'button',
+        tabindex: 0,
+        'data-country': j,
+        'data-measure': key || 'risk',
+        'aria-label':
+          d.name +
+          (
+            key
+              ? ', ' + labels[key] + ': ' + fmt(d[key])
+              : ', score: ' + fmt(d.risk)
+          )
+      },
+      undefined,
+      root
+    );
+
+    el(
+      'circle',
+      {
+        cx: px,
+        cy: py,
+        r: radius,
+        fill: color,
+        stroke: '#fff',
+        'stroke-width': 1.4
+      },
+      undefined,
+      group
+    );
+
+    el(
+      'circle',
+      {
+        cx: px,
+        cy: py,
+        r: Math.max(10, radius + 3),
+        fill: 'transparent'
+      },
+      undefined,
+      group
+    );
+
+    const show = () => tip(j, key, group.getBoundingClientRect());
+
+    group.onpointerenter = show;
+    group.onfocus = show;
+
+    group.onpointerleave = group.onblur = () => {
+      if (selected === null) {
+        $('tooltip').hidden = true;
+      }
+    };
+
+    const choose = () => {
+      selected = selected === j ? null : j;
+      $('tooltip').hidden = true;
+      draw();
+    };
+
+    group.onclick = choose;
+
+    group.onkeydown = event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        choose();
+      }
+
+      if (event.key === 'Escape') {
+        selected = null;
+        $('tooltip').hidden = true;
+        draw();
+      }
+    };
+
+    return group;
+  }
+
+  function smallLabel(root, px, py, text, side = 'right') {
+    const sign = side === 'left' ? -1 : 1;
+
+    el(
+      'line',
+      {
+        x1: px + sign * 8,
+        x2: px + sign * 24,
+        y1: py,
+        y2: py,
+        stroke: pointerColor,
+        'stroke-width': 1.2
+      },
+      undefined,
+      root
+    );
+
+    el(
+      'text',
+      {
+        x: px + sign * 28,
+        y: py + 5,
+        'text-anchor': side === 'left' ? 'end' : 'start'
+      },
+      text,
+      root
+    );
+  }
+
+  function axes(root, rank = false) {
+    const familyScene =
+      mode === 'combined' || mode === 'actual';
+
+    if (familyScene) {
+      el(
+        'line',
+        {
+          x1: L,
+          x2: L,
+          y1: T,
+          y2: B,
+          class: 'axis'
+        },
+        undefined,
+        root
+      );
+
+      for (const tick of [0, 1, 2, 3, 4]) {
+        el(
+          'line',
+          {
+            x1: L,
+            x2: R,
+            y1: y(tick),
+            y2: y(tick),
+            class: tick === 0 ? 'axis' : 'grid'
+          },
+          undefined,
+          root
+        );
+
+        el(
+          'text',
+          {
+            x: L - 9,
+            y: y(tick) + 4,
+            'text-anchor': 'end',
+            class: 'tick-label'
+          },
+          fmt(tick),
+          root
+        );
+      }
+
+      el(
+        'text',
+        {
+          x: L + 8,
+          y: T + 17,
+          class: 'axis-label',
+          style: 'fill:#111;font-weight:bold'
+        },
+        'Number of children',
+        root
+      );
+    } else {
+      el(
+        'line',
+        {
+          x1: L,
+          x2: R,
+          y1: B,
+          y2: B,
+          class: 'axis'
+        },
+        undefined,
+        root
+      );
+    }
+
+    const tickY = B + 31;
+
+    if (rank) {
+      data.forEach((d, j) => {
+        el(
+          'text',
+          {
+            x: L + (R - L) * j / 7,
+            y: tickY,
+            'text-anchor': 'middle',
+            class: 'tick-label'
+          },
+          j + 1,
+          root
+        );
+      });
+
+      el(
+        'text',
+        {
+          x: (L + R) / 2,
+          y: B + 71,
+          'text-anchor': 'middle',
+          class: 'axis-label'
+        },
+        'Risk-taking rank',
+        root
+      );
+
+      el(
+        'text',
+        {
+          x: L,
+          y: B + 71,
+          'text-anchor': 'start',
+          class: 'axis-direction'
+        },
+        'Lower',
+        root
+      );
+
+      el(
+        'text',
+        {
+          x: R,
+          y: B + 71,
+          'text-anchor': 'end',
+          class: 'axis-direction'
+        },
+        'Higher',
+        root
+      );
+    } else {
+      for (const tick of [4, 4.5, 5, 5.5, 6]) {
+        el(
+          'text',
+          {
+            x: x(tick),
+            y: tickY,
+            'text-anchor': 'middle',
+            class: 'tick-label'
+          },
+          fmt(tick),
+          root
+        );
+      }
+
+      el(
+        'text',
+        {
+          x: R - 4,
+          y: mode === 'score' ? B + 71 : B - 10,
+          'text-anchor': 'end',
+          class: 'axis-label'
+        },
+        'Willingness to take risks',
+        root
+      );
+    }
+  }
+
+  function draw() {
+    $('label-layer').replaceChildren();
+    svg.replaceChildren();
+
+  
+    el(
+      'desc',
+      { id: 'svgdesc' },
+      'Eight surveyed groups. Values are group averages. Hover or tap each circle for values.'
+    );
+
+    const group = el('g');
+    axes(group, mode === 'rank');
+
+    data.forEach((d, j) => {
+      const active = selected === null || selected === j;
+
+      const countryGroup = el(
+        'g',
+        { opacity: active ? 1 : .14 },
+        undefined,
+        group
+      );
+
+      if (mode === 'combined' || mode === 'actual') {
+        const points = keys.map(
+          key => current[j * 3 + keys.indexOf(key)]
+        );
+
+        // Connecting lines stay gray; label pointers are black.
+        el(
+          'line',
+          {
+            x1: points[0].x,
+            x2: points[0].x,
+            y1: Math.max(...points.map(point => point.y)),
+            y2: Math.min(...points.map(point => point.y)),
+            stroke: '#d6d8da',
+            'stroke-width': 1.3
+          },
+          undefined,
+          countryGroup
+        );
+
+        keys.forEach((key, i) => {
+          mark(
+            countryGroup,
+            points[i].x,
+            points[i].y,
+            j,
+            key,
+            5.9
+          );
+        });
+      } else {
+        const point = current[j * 3];
+
+        if (mode === 'score' && !moving) {
+          if (j === 0 || j === 7) {
+            el(
+              'line',
+              {
+                x1: point.x,
+                x2: point.x,
+                y1: B - 8,
+                y2: B - 112,
+                stroke: pointerColor,
+                'stroke-width': 1.2
+              },
+              undefined,
+              countryGroup
+            );
+
+            el(
+              'text',
+              {
+                x: point.x,
+                y: B - 120,
+                'text-anchor': 'middle'
+              },
+              j === 7 ? 'U.S.' : d.name,
+              countryGroup
+            );
+          }
+
+          if (j === 3) {
+            el(
+              'text',
+              {
+                x: (x(5.2) + x(5.91)) / 2,
+                y: B - 67,
+                'text-anchor': 'middle'
+              },
+              'The other six groups scored between 5 and 6.',
+              countryGroup
+            );
+          }
+        }
+
+        mark(
+          countryGroup,
+          point.x,
+          point.y,
+          j,
+          null,
+          6.5
+        );
+
+        if (mode === 'rank') {
+          const anchors = [
+            'Korea',
+            'Israel',
+            'Chinese-speakers|elsewhere in Asia',
+            'United Kingdom',
+            'Ireland',
+            'Mainland|China',
+            'Egypt',
+            'United States'
+          ];
+
+          const lines = anchors[j].split('|');
+          const base = B - 17;
+
+          lines.forEach((line, lineIndex) => {
+            el(
+              'text',
+              {
+                x: point.x,
+                y: base - (lines.length - 1 - lineIndex) * 16,
+                'text-anchor': 'middle'
+              },
+              line,
+              countryGroup
+            );
+          });
+        }
+      }
+    });
+
+    if (mode === 'combined' && !moving) {
+      const countryLabels = [
+        ['Korea', 'i', 'left'],
+        ['Israel', 'h', 'left'],
+        ['Chinese-speakers\nelsewhere in Asia', 'a', 'left'],
+        ['U.K.', 'i', 'left'],
+        ['Ireland', 'a', 'below'],
+        ['Mainland China', 'a', 'below'],
+        ['Egypt', 'i', 'right'],
+        ['U.S.', 'i', 'right']
+      ];
+
+      countryLabels.forEach(([name, key, side], j) => {
+        const px = x(data[j].risk);
+        const py = y(data[j][key]);
+
+        if (side === 'below') {
+          const textY = py + (j === 4 ? 60 : 30);
+
+          el(
+            'line',
+            {
+              x1: px,
+              x2: px,
+              y1: py + 8,
+              y2: textY - 16,
+              stroke: pointerColor,
+              'stroke-width': 1.2
+            },
+            undefined,
+            group
+          );
+
+          el(
+            'text',
+            {
+              x: px,
+              y: textY,
+              'text-anchor': 'middle'
+            },
+            name,
+            group
+          );
+        } else {
+          smallLabel(group, px, py, name, side);
+        }
+      });
+    }
+
+    if (mode === 'actual' && !moving) {
+      const exceptionLabels = [
+        { index: 1, key: 'h', side: 'left' },
+        { index: 6, key: 'i', side: 'right' }
+      ];
+
+      exceptionLabels.forEach(({ index, key, side }) => {
+        const d = data[index];
+
+        smallLabel(
+          group,
+          x(d.risk),
+          y(d[key]),
+          d.name,
+          side
+        );
+      });
+    }
+  }
+
+  function setScene(next, animate = true) {
+    const old = current.length
+      ? current.map(point => ({ ...point }))
+      : positions(next);
+
+    const destination = positions(next);
+
+    mode = next;
+    selected = null;
+
+    $('tooltip').hidden = true;
+    cancelAnimationFrame(raf);
+
+    $('title').textContent = copy[next].title;
+
+    // Allows <br> in the fixed subtitle copy above.
+    $('subtitle').innerHTML = copy[next].subtitle;
+
+    $('legend').hidden =
+      !['combined', 'actual'].includes(next);
+
+    [...$('legend').children].forEach((item, i) => {
+      item.querySelector('.swatch').style.background =
+        next === 'actual' && i !== 2
+          ? gray
+          : colors[keys[i]];
+    });
+
+    if (!animate || reduced) {
+      current = destination;
+      moving = false;
+      draw();
+      return;
+    }
+
+    moving = true;
+    const started = performance.now();
+
+    function frame(time) {
+      const progress = Math.min(1, (time - started) / 950);
+      const ease = progress * progress * (3 - 2 * progress);
+
+      current = destination.map((point, j) => ({
+        x: old[j].x + (point.x - old[j].x) * ease,
+        y: old[j].y + (point.y - old[j].y) * ease
+      }));
+
+      moving = progress < 1;
+      draw();
+
+      if (moving) {
+        raf = requestAnimationFrame(frame);
+      }
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  let scrollRaf = 0;
+
+  function onScroll() {
+    if (scrollRaf) return;
+
+    scrollRaf = requestAnimationFrame(() => {
+      scrollRaf = 0;
+
+      const story = $('chart-story');
+      const storyTop =
+        story.getBoundingClientRect().top + window.scrollY;
+
+      const localScroll = window.scrollY - storyTop;
+
+      // Additional story height is reserved for the final step.
+      const index = Math.min(
+        scenes.length - 1,
+        Math.max(
+          0,
+          Math.floor(
+            (localScroll + window.innerHeight * .24) /
+            window.innerHeight
+          )
+        )
+      );
+
+      if (scenes[index] !== mode) {
+        setScene(scenes[index]);
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, {
+    passive: true
+  });
+
+  window.addEventListener('resize', onScroll);
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      $('tooltip').hidden = true;
+    },
+    true
+  );
+
+  window.addEventListener('resize', () => {
+    $('tooltip').hidden = true;
+  });
+
+function startAtCurrentPosition() {
+  const story = $('chart-story');
+  const storyTop =
+    story.getBoundingClientRect().top + window.scrollY;
+
+  const index = Math.min(
+    scenes.length - 1,
+    Math.max(
+      0,
+      Math.floor(
+        (window.scrollY - storyTop + window.innerHeight * .24) /
+        window.innerHeight
+      )
+    )
+  );
+
+  // Start directly at the current step without flashing the first chart.
+  setScene(scenes[index], false);
+}
+
+window.addEventListener('pageshow', () => {
+  requestAnimationFrame(startAtCurrentPosition);
+});
+})();
+</script>
+
+</body>
+</html>
